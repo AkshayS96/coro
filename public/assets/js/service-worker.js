@@ -51,6 +51,21 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>{
         break;
     case 'change_tab':
       chrome.tabs.update(request.tabId, {active: true});
+      break;
+    case 'bookmarks_all':
+      {
+        chrome.bookmarks.getRecent(100, (results) => {
+          const bookmarks = results.map((result) => {
+            return {
+              title: result.title,
+              url: result.url ?? '',
+            }
+          });
+          sendResponse({
+            bookmarks,
+          })
+        });
+      }
     }
     return true;
 });

@@ -1,7 +1,7 @@
 import { KBarAnimator, KBarPortal, KBarPositioner } from "kbar";
 import Results from "./Results";
 import Footer from "./Footer";
-import useTabsActions from "./hooks/useTabsActions";
+import { useTabActions, useBookmarkActions } from "./hooks/useActions";
 import Search from "./Search";
 
 
@@ -15,7 +15,8 @@ const animatorStyle = {
 };
 
 export default function CommandBar() {
-    useTabsActions();
+    useTabActions();
+    useBookmarkActions();
     return (
         <KBarPortal>
             <KBarPositioner style={{
