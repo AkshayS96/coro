@@ -12,6 +12,16 @@
             "all_frame": true
         }
     ],
+    "permissions": [
+        "bookmarks",
+        "tabs"
+    ],
+    "background": {
+        "service_worker": "/assets/js/service-worker.js"
+    },
+    "externally_connectable": {
+        "matches": ["<all_urls>"]
+    },
     "web_accessible_resources": [
         {
             "resources": ["/react/index.js", "/react/vendor.js", "/react/index.css", "/assets/images/react.svg", "/vite.svg"],
