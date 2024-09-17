@@ -1,8 +1,9 @@
 import { KBarAnimator, KBarPortal, KBarPositioner } from "kbar";
 import Results from "./Results";
 import Footer from "./Footer";
-import { useTabActions, useBookmarkActions } from "./hooks/useActions";
+import { useTabActions, useBookmarkActions, useBrowserActions } from "./hooks/useActions";
 import Search from "./Search";
+import { useToast } from "@/hooks/use-toast"
 
 
 const animatorStyle = {
@@ -15,6 +16,9 @@ const animatorStyle = {
 };
 
 export default function CommandBar() {
+    const { toast } = useToast();
+
+    useBrowserActions(toast);
     useTabActions();
     useBookmarkActions();
     return (
