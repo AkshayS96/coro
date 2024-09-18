@@ -1,6 +1,6 @@
 {
-    "name": "Search",
-    "description": "Search Chrome extension",
+    "name": "Coro",
+    "description": "Coro Chrome extension",
     "version": "1.0.0",
     "manifest_version": 3,
     "options_page": "/options/options.html",
