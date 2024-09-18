@@ -7,6 +7,7 @@ const groupNameStyle = {
   fontSize: "10px",
   textTransform: "uppercase" as const,
   opacity: 0.5,
+  color: 'black',
 };
 
 const ResultItem = React.forwardRef(
@@ -46,6 +47,7 @@ const ResultItem = React.forwardRef(
           alignItems: "center",
           justifyContent: "space-between",
           cursor: "pointer",
+          color: 'black',
         }}
       >
         <div
