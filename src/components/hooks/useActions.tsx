@@ -1,7 +1,7 @@
 import { createAction, useKBar, useRegisterActions, } from "kbar";
 import { useEffect, useMemo, useState } from "react";
 import type { Action } from 'kbar';
-import { AppWindow, Bookmark, EyeOff, Globe, History, Plus, Printer, Star } from "lucide-react";
+import { AppWindow, Bookmark, Command, EyeOff, Globe, History, Plus, Printer, Star } from "lucide-react";
 import React from "react";
 
 export function useTabActions() {
@@ -138,4 +138,20 @@ export function useBrowserActions(toast: (...args: any) => any) {
         })
     ];
     useRegisterActions([...browserActions].filter(Boolean) as Action[], [browserActions]);
+}
+
+export function useExtensionOptionActions() {
+    const extensionOptionActions = [
+        createAction({
+            name: 'Create Command',
+            keywords: 'create command',
+            section: 'Extension',
+            subtitle: 'Create custom command',
+            icon: React.createElement(Command),
+            perform: (_) => {
+                chrome.runtime.sendMessage({ type: 'options_page' });
+            }
+        }),
+    ];
+    useRegisterActions([...extensionOptionActions].filter(Boolean) as Action[], [extensionOptionActions]);
 }

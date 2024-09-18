@@ -62,3 +62,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+#search-extension-options-root {
+    height: 100vh;
+    width: 100vw;
+}

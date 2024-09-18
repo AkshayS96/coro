@@ -15,7 +15,8 @@
     ],
     "permissions": [
         "bookmarks",
-        "tabs"
+        "tabs",
+        "storage"
     ],
     "background": {
         "service_worker": "/assets/js/service-worker.js"
@@ -25,7 +26,7 @@
     },
     "web_accessible_resources": [
         {
-            "resources": ["/react/main.js", "/react/main.css"],
+            "resources": ["/react/main.js", "/react/main.css", "/react/utils.js"],
             "matches": ["<all_urls>"]
         }
     ]
