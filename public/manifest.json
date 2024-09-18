@@ -3,10 +3,11 @@
     "description": "Search Chrome extension",
     "version": "1.0.0",
     "manifest_version": 3,
+    "options_page": "/options/options.html",
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "css": ["/react/index.css"],
+            "css": ["/react/main.css"],
             "js": ["/assets/js/initializeUI.js"],
             "run_at": "document_end",
             "all_frame": true
@@ -24,7 +25,7 @@
     },
     "web_accessible_resources": [
         {
-            "resources": ["/react/index.js", "/react/vendor.js", "/react/index.css", "/assets/images/react.svg", "/vite.svg"],
+            "resources": ["/react/main.js", "/react/main.css"],
             "matches": ["<all_urls>"]
         }
     ]

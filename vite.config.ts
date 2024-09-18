@@ -19,11 +19,15 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, './index.html'),
+        options: path.resolve(__dirname, './options/options.html')
+      },
       output: {
         entryFileNames: "react/[name].js",
         chunkFileNames: "react/[name].js",
         assetFileNames: "react/[name].[ext]"
       }
-    }
+    },
   }
 });
