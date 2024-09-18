@@ -12,7 +12,9 @@ function App() {
   const initialActions: Action[] = []
   return (
     <>
-      <KBarProvider actions={initialActions}>
+      <KBarProvider actions={initialActions} options={{
+        toggleShortcut: "$mod+Shift+L"
+      }}>
         <CommandBar />
       </KBarProvider>
       <Toaster />
