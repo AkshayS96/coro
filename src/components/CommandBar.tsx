@@ -1,7 +1,7 @@
 import { KBarAnimator, KBarPortal, KBarPositioner } from "kbar";
 import Results from "./Results";
 import Footer from "./Footer";
-import { useTabActions, useBookmarkActions, useBrowserActions, useExtensionOptionActions } from "./hooks/useActions";
+import { useTabActions, useBookmarkActions, useBrowserActions, useExtensionOptionActions, useCustomCommandActions } from "./hooks/useActions";
 import Search from "./Search";
 import { useToast } from "@/hooks/use-toast"
 
@@ -22,6 +22,7 @@ export default function CommandBar() {
     useTabActions();
     useBookmarkActions();
     useExtensionOptionActions();
+    useCustomCommandActions();
     return (
         <KBarPortal>
             <KBarPositioner style={{

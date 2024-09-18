@@ -1,7 +1,7 @@
 import { createAction, useKBar, useRegisterActions, } from "kbar";
 import { useEffect, useMemo, useState } from "react";
 import type { Action } from 'kbar';
-import { AppWindow, Bookmark, Command, EyeOff, Globe, History, Plus, Printer, Star } from "lucide-react";
+import { AppWindow, Bookmark, Command, CommandIcon, EyeOff, Globe, History, Plus, Printer, Star } from "lucide-react";
 import React from "react";
 
 export function useTabActions() {
@@ -154,4 +154,35 @@ export function useExtensionOptionActions() {
         }),
     ];
     useRegisterActions([...extensionOptionActions].filter(Boolean) as Action[], [extensionOptionActions]);
+}
+
+export function useCustomCommandActions() {
+    const visualState = useKBar(state => state.visualState);
+    // biome-ignore lint/suspicious/noExplicitAny:
+    const [customCommands, setCustomCommands] = useState<any[]>([]);
+
+    // biome-ignore lint/correctness/useExhaustiveDependencies:
+    useEffect(() => {
+        chrome.runtime.sendMessage({ type: 'options_get_commands' }, (commands) => {
+            setCustomCommands(commands);
+        });
+    }, [visualState]);
+
+    const customCommandActions = useMemo(() => {
+        return customCommands.map((command) => {
+            return createAction({
+                name: command.name,
+                keywords: 'custom command',
+                section: 'Custom Commands',
+                subtitle: 'Custom Command',
+                icon: <CommandIcon />,
+                // biome-ignore lint/suspicious/noExplicitAny:
+                perform: (_: any) => {
+                    window.open(command.url, "_target");
+                }
+            });
+        });
+    }, [customCommands]);
+
+    useRegisterActions([...customCommandActions].filter(Boolean) as Action[], [customCommandActions]);
 }
