@@ -6,7 +6,6 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import CustomCommands from "./components/CustomCommands";
-import Help from "./components/Help";
 
 export function App() {
     return (
@@ -22,11 +21,6 @@ export function App() {
                     <TabsContent value="Custom Commands">
                         <div className="flex flex-col w-full h-full">
                             <CustomCommands />
-                        </div>
-                    </TabsContent>
-                    <TabsContent value="Help">
-                        <div className="flex flex-col w-full h-full">
-                            <Help />
                         </div>
                     </TabsContent>
                 </div>
